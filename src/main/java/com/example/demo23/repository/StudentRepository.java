@@ -2,6 +2,7 @@ package com.example.demo23.repository;
 
 import com.example.demo23.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -24,6 +25,10 @@ public interface StudentRepository extends JpaRepository<Student,Integer> {
 
     @Query("select o from Student o where o.stuName like %?1%")
     List<Student> queryLike(String stuName);
+
+    @Modifying
+    @Query("update Student o set o.stuName = :stuName where o.stuPhone = :stuPhone")
+    void updateStudent(@Param("stuName") String stuName, @Param("stuPhone") String stuPhone);
 
     //原生态查询（对象是表）
     @Query(nativeQuery = true, value = "select count(1) from student")

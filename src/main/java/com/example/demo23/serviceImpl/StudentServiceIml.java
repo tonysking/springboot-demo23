@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -43,11 +44,8 @@ public class StudentServiceIml implements StudentService {
     }
 
     @Override
-    @Modifying
-    //@Query("update student u set u.stuName = :stuName where u.stuPhone = :stuPhone"),@Param("stuName") String stuName
-    public Student updateStudent(Integer id) {
-        Student student = studentRepository.findById(id).get();
-        student.setStuName("ye");
-        return studentRepository.save(student);
+    @Transactional
+    public void updateStudent(String name, String phone) {
+        studentRepository.updateStudent(name, phone);
     }
 }

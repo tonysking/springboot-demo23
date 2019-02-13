@@ -39,8 +39,5 @@ public class StudentController {
     private Student updateStudent(Student student){
         return studentService.updateStudent(student);
     }
-    @PutMapping("/update2/{id}")
-    private Student updateStudent(@PathVariable("id") Integer id){
-        return studentService.updateStudent(id);
-    }
+
 }
