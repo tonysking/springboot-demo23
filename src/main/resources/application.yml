@@ -1,0 +1,37 @@
+spring:
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/mysys?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: 6666
+
+  jpa:
+      database: mysql
+      show-sql: true
+      hibernate:
+        ddl-auto: update
+#  开发阶段关闭thymeleaf的模板缓存,Ctrl F9重新build项目即可更新对页面的修改
+  thymeleaf:
+    cache: false
+
+#   redis
+  redis:
+    database: 1
+    host: 192.168.186.128
+    port: 6379
+    password: 6666
+    jedis:
+      pool:
+        # 最大连接数
+        max-active: 8
+        # 连接池最大阻塞等待时间
+        max-wait: -1ms
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池中的最小空闲连接
+        min-idle: 0
+    # 连接超时时间
+    timeout: 2000ms
+
+
+

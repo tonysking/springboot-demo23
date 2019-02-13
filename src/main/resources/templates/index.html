@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymmeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+    <table class="table table-hover tile">
+        <tr>
+            <th> 编号  </th>
+            <th> 学生名称  </th>
+            <th> 学生电话  </th>
+            <th> 学生地址  </th>
+            <th> 操作  </th>
+        </tr>
+        <tr th:each="Student,iterStat:${stus}">
+            <td th:text="${iterStat.Count}"> aaa </td>
+            <td th:text="${Student.stuName}"> aaa </td>
+            <td th:text="${Student.stuPhone}"> aaa </td>
+            <td th:text="${Student.stuAddress}">s aaa </td>
+            <td>
+                <a  th:href="@{/web/toUpdate/(id=${Student.stuID})}"> 修改 </a>  |
+                <a  th:href="@{'/web/delete/'+${Student.stuID}}"> 删除 </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a  th:href="@{/web/toAdd}" class="btn btn-info"> 新增 </a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
